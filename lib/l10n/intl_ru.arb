@@ -1,0 +1,42 @@
+{
+  "push_ctrl_panel_project_add_new": "Добавить новый",
+  "push_ctrl_panel_project_not_selected_err": "Не выбран проект",
+  "push_ctrl_panel_msg_payload": "Данные пуш-сообщения",
+  "push_ctrl_panel_msg_payload_parse_err": "Не удалось сформировать тело пуш-сообщения",
+  "push_ctrl_panel_msg_target": "Таргетирование сообщения",
+  "push_ctrl_panel_msg_target_not_stated_err": "Топик или токен устройства не указан",
+  "push_ctrl_panel_gms_project": "Проект Firebase",
+  "push_ctrl_panel_gms_validate_only_hint": "API-валидация пуш-уведомления без рассылки на конечные устройства (validate_only)",
+  "push_ctrl_panel_hms_project": "Проект или приложение HMS",
+  "push_ctrl_panel_hms_validate_only_hint": "API-валидация пуш-уведомления без рассылки на конечные устройства (validate_only)",
+  "push_ctrl_panel_send_log_hint": "Лог отправки пуш-сообщений",
+
+  "push_target_type_topic": "Топик",
+  "push_target_type_token": "Токен устройства",
+
+  "push_target_history": "Выберите ранее сохраненный адрес",
+
+  "proj_ctor_new_title": "Новый проект",
+  "proj_ctor_upd_title": "Изменение проекта",
+  "proj_ctor_gms_id_hint": "Firebase project ID",
+  "proj_ctor_gms_cred_json_hint": "Уч. данные аккаунта Firebase (JSON)",
+  "proj_ctor_gms_id_empty_err": "Не указан ID проекта Firebase",
+  "proj_ctor_gms_cred_empty_err": "Не указаны учетные данные проекта Firebase",
+  "proj_ctor_gms_cred_invalid_err": "Неверный формат JSON для учетных данных проекта Firebase",
+  "proj_ctor_hms_id_hint": "Huawei project ID или app ID",
+  "proj_ctor_hms_cl_id_hint": "Huawei app OAuth 2.0 client ID",
+  "proj_ctor_hms_cl_secret_hint": "Huawei app OAuth 2.0 client secret",
+  "proj_ctor_hms_id_empty_err": "Не указан ID проекта или приложения Huawei",
+  "proj_ctor_hms_id_invalid_err": "Неверный формат ID проекта или приложения Huawei",
+  "proj_ctor_hms_cl_id_empty_err": "Не указан OAuth 2.0 client ID приложения Huawei",
+  "proj_ctor_hms_cl_id_invalid_err": "Неверный формат ID OAuth 2.0 client ID приложения Huawei",
+  "proj_ctor_hms_cl_secret_empty_err": "Не указан OAuth 2.0 client secret приложения Huawei",
+
+  "general_accept": "Подтвердить",
+  "general_add": "Добавить",
+  "general_deleted": "Удалено",
+  "general_send": "Отправить",
+  "general_search": "Поиск",
+  "general_topic": "Топик",
+  "general_device_token": "Токен устройства"
+}

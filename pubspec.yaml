@@ -1,0 +1,46 @@
+name: pusher
+description: Push notification sender
+
+publish_to: 'none'
+version: 1.0.1+4
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  shared_preferences: 2.2.2 # App properties
+  flutter_secure_storage: 9.0.0 # Sensitive data (tokens, cipher keys) container
+  window_manager: 0.3.7 # Windows/Linux/macOS app window size controller
+
+  flutter_statusbarcolor_ns: 0.5.0 # Native status bar controller (iOS Background color support)
+
+  flutter_svg: 2.0.9 # SVG render engine
+  dropdown_button2: 2.3.9 # Project select popup menu
+
+  hive: 2.2.3 # NOSQL DB
+  hive_flutter: 1.1.0
+
+  googleapis_auth: 1.4.1 # Firebase FCM API v1 testing
+  dio: 5.4.0 # Network interaction provider
+
+  intl: 0.18.1
+
+flutter_intl:
+  enabled: true
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Setup: pub global activate flutter_asset_generator
+  flutter_asset_generator: 1.1.0 # Assets map generator (fgen --no-watch --no-preview -n R -o lib/generated/assets.dart)
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

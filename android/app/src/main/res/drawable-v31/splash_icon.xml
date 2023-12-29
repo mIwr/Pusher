@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:height="96dp" android:width="96dp"
+        android:gravity="center">
+        <shape android:shape="rectangle" android:tint="@color/ic_launcher_background">
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+
+    <item
+        android:height="88dp"
+        android:width="88dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_radar"/>
+</layer-list>

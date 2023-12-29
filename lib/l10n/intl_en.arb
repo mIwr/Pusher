@@ -1,0 +1,42 @@
+{
+  "push_ctrl_panel_project_add_new": "Add new",
+  "push_ctrl_panel_project_not_selected_err": "Project not selected",
+  "push_ctrl_panel_msg_payload": "Push message data",
+  "push_ctrl_panel_msg_payload_parse_err": "Push message payload parse fail",
+  "push_ctrl_panel_msg_target": "Message target",
+  "push_ctrl_panel_msg_target_not_stated_err": "Topic or device token not stated",
+  "push_ctrl_panel_gms_project": "Firebase project",
+  "push_ctrl_panel_gms_validate_only_hint": "Validate push notification through API without sending to devices (validate_only)",
+  "push_ctrl_panel_hms_project": "HMS project or app",
+  "push_ctrl_panel_hms_validate_only_hint": "Validate push notification through API without sending to devices (validate_only)",
+  "push_ctrl_panel_send_log_hint": "Push notifications send log",
+
+  "push_target_type_topic": "Topic",
+  "push_target_type_token": "Device token",
+
+  "push_target_history": "Pick previously saved push target",
+
+  "proj_ctor_new_title": "New project",
+  "proj_ctor_upd_title": "Project update",
+  "proj_ctor_gms_id_hint": "Firebase project ID",
+  "proj_ctor_gms_cred_json_hint": "Firebase account credentials json",
+  "proj_ctor_gms_id_empty_err": "Firebase project ID not stated",
+  "proj_ctor_gms_cred_empty_err": "Firebase project credential not stated",
+  "proj_ctor_gms_cred_invalid_err": "Firebase project credential invalid JSON",
+  "proj_ctor_hms_id_hint": "Huawei project or app ID",
+  "proj_ctor_hms_cl_id_hint": "Huawei app OAuth 2.0 client ID",
+  "proj_ctor_hms_cl_secret_hint": "Huawei app OAuth 2.0 client secret",
+  "proj_ctor_hms_id_empty_err": "Huawei project or app ID not stated",
+  "proj_ctor_hms_id_invalid_err": "Invalid Huawei project or app ID",
+  "proj_ctor_hms_cl_id_empty_err": "Huawei app OAuth 2.0 client ID not stated",
+  "proj_ctor_hms_cl_id_invalid_err": "Invalid Huawei app OAuth 2.0 client ID",
+  "proj_ctor_hms_cl_secret_empty_err": "Huawei app OAuth 2.0 client secret not stated",
+
+  "general_accept": "Accept",
+  "general_add": "Add",
+  "general_deleted": "Deleted",
+  "general_send": "Send",
+  "general_search": "Search",
+  "general_topic": "Topic",
+  "general_device_token": "Device token"
+}

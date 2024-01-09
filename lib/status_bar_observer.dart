@@ -111,10 +111,12 @@ class StatusBarObserver extends RouteObserver<ModalRoute<dynamic>> with WidgetsB
         await StatusBarUtil.transformByBg(bgColor: coloredBg);
         break;
       case Screens.projCtor:
+        await StatusBarUtil.transformByBg(bgColor: coloredBg);
         break;
       case Screens.msgCtor:
         break;
       case Screens.notePicker:
+        await StatusBarUtil.transformByBg(bgColor: coloredBg);
         break;
     }
   }

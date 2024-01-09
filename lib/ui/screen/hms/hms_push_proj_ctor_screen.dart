@@ -64,8 +64,8 @@ class _HmsPushProjectCtorScreenState extends State<HmsPushProjectCtorScreen> {
             ? (S.current.proj_ctor_new_title + " HMS")
             : (S.current.proj_ctor_upd_title + " HMS"), textAlign: TextAlign.center, style: primaryTextTheme.displayLarge))
       ],)),
-      Padding(padding: EdgeInsets.only(top: 16 + (primaryTextTheme.displayLarge?.fontSize ?? 24.0)),
-          child: SingleChildScrollView(physics: BouncingScrollPhysics(), padding: EdgeInsets.fromLTRB(16, 16, 16, 0), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(padding: EdgeInsets.only(top: 32 + (primaryTextTheme.displayLarge?.fontSize ?? 24.0)),
+          child: SingleChildScrollView(physics: BouncingScrollPhysics(), padding: EdgeInsets.fromLTRB(16, 0, 16, 0), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(S.current.proj_ctor_hms_id_hint, style: primaryTextTheme.bodyLarge),
             Padding(padding: EdgeInsets.only(top: 8)),
             AppTextField(hintText: S.current.proj_ctor_hms_id_hint, controller: _idTextController, keyboardType: TextInputType.number,),

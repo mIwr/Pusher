@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pusher/extension/navigator_ext.dart';
 import 'package:pusher/screens_enum.dart';
+import 'package:pusher/status_bar_observer.dart';
+import 'package:pusher/system_nav_bar_observer.dart';
 import 'package:pusher/ui/screen/tab/push_gms_ctrl_screen.dart';
 import 'package:pusher/ui/screen/tab/push_hms_ctrl_screen.dart';
 import 'package:pusher/ui/view/tab_bar/cuper_tab_bar.dart';
@@ -39,7 +41,10 @@ class _TabBarScaffoldState extends State<TabBarScaffold> {
   CupertinoTabView _buildTab(BuildContext context, {required GlobalKey<NavigatorState> navKey, required String routeName, required StatefulWidget payload}) {
     return CupertinoTabView(navigatorKey: navKey, routes: {
       routeName: (context) => payload
-    },  navigatorObservers: [], onUnknownRoute: (route) {
+    },  navigatorObservers: [
+      StatusBarObserver(),
+      SystemNavBarObserver()
+    ], onUnknownRoute: (route) {
       //custom route name on tab hack
       return MaterialPageRoute(settings: RouteSettings(name: routeName), builder: (context) => payload);
     },);

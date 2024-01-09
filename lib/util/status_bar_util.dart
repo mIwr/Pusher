@@ -72,10 +72,16 @@ abstract class StatusBarUtil {
   }
 
   static void hideStatusBar() {
+    if (!Platform.isAndroid && !Platform.isIOS) {
+      return;
+    }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
   }
 
   static void showStatusBar() {
+    if (!Platform.isAndroid && !Platform.isIOS) {
+      return;
+    }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
   }
 }

@@ -1,11 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:pusher/global_variables.dart';
-import 'package:pusher/screens_enum.dart';
-import 'package:pusher/ui/theme/app_day_theme.dart';
-import 'package:pusher/ui/theme/app_night_theme.dart';
 import 'package:pusher/util/system_navigation_bar_util.dart';
-import 'package:pusher/util/theme_util.dart';
+import 'package:pusher_fl_core/pusher_fl_core.dart';
+import 'package:pusher_fl_core/pusher_fl_core_ui.dart';
 
 ///Android 12+ bottom navigation bar refresh observer
 class SystemNavBarObserver extends RouteObserver<ModalRoute<dynamic>> with WidgetsBindingObserver {

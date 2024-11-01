@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
-import 'package:pusher/util/color_util.dart';
+import 'package:pusher_fl_core/pusher_fl_core.dart';
 
 ///Status bar utils
 abstract class StatusBarUtil {

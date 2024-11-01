@@ -1,0 +1,25 @@
+name: pusher_core
+description: "Dart module with Pusher No-UI core. The module contains all project business logic except platform-specific features"
+version: 1.0.1
+
+topics:
+  - pusher
+  - hms
+  - fcm
+  - core
+  - dart
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+
+  http: ^1.2.2 # HTTP client
+
+  googleapis_auth: ^1.6.0 # Firebase FCM API v1 auth
+
+  intl: ^0.19.0
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.25.7

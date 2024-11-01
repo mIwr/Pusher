@@ -1,21 +1,20 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pusher/extension/navigator_ext.dart';
-import 'package:pusher/screens_enum.dart';
 import 'package:pusher/status_bar_observer.dart';
 import 'package:pusher/system_nav_bar_observer.dart';
 import 'package:pusher/ui/screen/tab/push_gms_ctrl_screen.dart';
 import 'package:pusher/ui/screen/tab/push_hms_ctrl_screen.dart';
-import 'package:pusher/ui/view/tab_bar/cuper_tab_bar.dart';
-import 'package:pusher/ui/view/tab_bar/cuper_tab_bar_item.dart';
-import 'package:pusher/generated/assets.dart';
 import 'package:pusher/util/status_bar_util.dart';
+import 'package:pusher_fl_core/pusher_fl_core.dart';
+import 'package:pusher_fl_core/pusher_fl_core_ui.dart';
 
 class TabBarScaffold extends StatefulWidget {
 
+  const TabBarScaffold({super.key});
+
   @override
-  _TabBarScaffoldState createState() => _TabBarScaffoldState();
+  State createState() => _TabBarScaffoldState();
 }
 
 class _TabBarScaffoldState extends State<TabBarScaffold> {
@@ -54,14 +53,14 @@ class _TabBarScaffoldState extends State<TabBarScaffold> {
   Widget build(BuildContext context) {
     if (_tabs.isEmpty) {
       _tabs.addAll([
-        _buildTab(context, navKey: _navigationKeys[0], routeName: kPushGmsCtrlTabRouteKey, payload: PushGmsCtrlScreen()),
-        _buildTab(context, navKey: _navigationKeys[1], routeName: kPushHmsCtrlTabRouteKey, payload: PushHmsCtrlScreen()),
+        _buildTab(context, navKey: _navigationKeys[0], routeName: kPushGmsCtrlTabRouteKey, payload: const PushGmsCtrlScreen()),
+        _buildTab(context, navKey: _navigationKeys[1], routeName: kPushHmsCtrlTabRouteKey, payload: const PushHmsCtrlScreen()),
       ]);
     }
 
     final bottomBar = CuperBottomTabBar(key: _bottomTabBarKey, tabBarItems: [
-      CuperTabBarItem(title: "GMS", onSvgIcon: R.ASSETS_IC_GOOGLE_SVG, offSvgIcon: R.ASSETS_IC_GOOGLE_SVG).buildItem(context),
-      CuperTabBarItem(title: "HMS", onSvgIcon: R.ASSETS_IC_HUAWEI_SVG, offSvgIcon: R.ASSETS_IC_HUAWEI_SVG).buildItem(context),
+      CuperTabBarItem(title: "GMS", onSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_GOOGLE_SVG), offSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_GOOGLE_SVG)).buildItem(context),
+      CuperTabBarItem(title: "HMS", onSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_HUAWEI_SVG), offSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_HUAWEI_SVG)).buildItem(context),
     ],
       onTap: (newIndex) {
       final navKey = _navigationKeys[newIndex];
@@ -76,7 +75,7 @@ class _TabBarScaffoldState extends State<TabBarScaffold> {
 
     return CupertinoPageScaffold(resizeToAvoidBottomInset: false, child: CupertinoTabScaffold(
       tabBar: bottomBar.buildBar(context), tabBuilder: (context, index) {
-        return PopScope(child: _tabs[index], canPop: false, onPopInvoked: (didPop) {
+        return PopScope(canPop: false, onPopInvoked: (didPop) {
           if (!didPop) {
             return;
           }
@@ -85,7 +84,7 @@ class _TabBarScaffoldState extends State<TabBarScaffold> {
             return;
           }
           state?.pop();
-        });
+        }, child: _tabs[index]);
     }));
   }
 }

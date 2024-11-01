@@ -1,11 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:pusher/global_variables.dart';
-import 'package:pusher/screens_enum.dart';
-import 'package:pusher/ui/theme/app_day_theme.dart';
-import 'package:pusher/ui/theme/app_night_theme.dart';
 import 'package:pusher/util/status_bar_util.dart';
-import 'package:pusher/util/theme_util.dart';
+import 'package:pusher_fl_core/pusher_fl_core.dart';
+import 'package:pusher_fl_core/pusher_fl_core_ui.dart';
 import 'status_bar_state.dart';
 
 ///System status bar refresh observer
@@ -83,7 +80,7 @@ class StatusBarObserver extends RouteObserver<ModalRoute<dynamic>> with WidgetsB
       return;
     }
 
-    final transparentBg = Colors.transparent;
+    const transparentBg = Colors.transparent;
     var coloredBg = Colors.white;
     final context = route.navigator?.context;
     if (context != null) {

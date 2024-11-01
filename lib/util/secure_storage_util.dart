@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:pusher/model/gms/gms_project_config.dart';
-import 'package:pusher/model/hms/hms_project_config.dart';
+import 'package:pusher_core/pusher_core_model.dart';
 
 ///Flutter wrapper for native secure storages (Android KeyStore or Apple Keychain)
 abstract final class SecureStorageUtil
@@ -22,7 +21,7 @@ abstract final class SecureStorageUtil
 
   ///Writes GMS projects onto secure storage
   static Future<void> setGmsProjects(List<GmsProjectConfig> projects) async {
-    final storage = FlutterSecureStorage();
+    const storage = FlutterSecureStorage();
     final List<Map<String, dynamic>> arr = [];
     for (final proj in projects) {
       arr.add(proj.asMap());
@@ -33,7 +32,7 @@ abstract final class SecureStorageUtil
 
   ///Writes HMS projects onto secure storage
   static Future<void> setHmsProjects(List<HmsProjectConfig> projects) async {
-    final storage = FlutterSecureStorage();
+    const storage = FlutterSecureStorage();
     final List<Map<String, dynamic>> arr = [];
     for (final proj in projects) {
       arr.add(proj.asMap());
@@ -43,7 +42,7 @@ abstract final class SecureStorageUtil
   }
 
   static Future<List<T>> _getProjectsAsync<T>({required String key, required T? Function(Map<String, dynamic> json) parser}) async {
-    final storage = FlutterSecureStorage();
+    const storage = FlutterSecureStorage();
     final exists = await storage.containsKey(key: key);
     if (!exists) {
       await storage.write(key: key, value: "[]");

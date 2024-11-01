@@ -1,0 +1,34 @@
+name: pusher_fl_core
+description: "Pusher fully cross-platform Flutter core"
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Native payload dependencies
+  shared_preferences: 2.3.2
+
+  pusher_core:
+    path: ../pusher_core
+
+  flutter_svg: 2.0.10+1 # SVG render engine
+
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: any
+
+  # Setup: pub global activate flutter_asset_generator
+  flutter_asset_generator: 1.2.0 # Assets map generator (fgen --no-watch --no-preview -n R -o lib/src/generated/assets.dart)
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/

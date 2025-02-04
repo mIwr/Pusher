@@ -6,8 +6,6 @@ import 'dart:convert';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pusher/generated/l10n.dart';
-import 'package:pusher/model/push_target_type_ext_locale.dart';
 import 'package:pusher/ui/screen/gms/gms_push_proj_ctor_screen.dart';
 import 'package:pusher/util/db/push_targets_db_util.dart';
 import 'package:pusher/util/secure_storage_util.dart';
@@ -114,7 +112,7 @@ class _PushGmsCtrlScreen extends State<PushGmsCtrlScreen> {
                 Padding(padding: const EdgeInsets.only(right: 32), child: ValueListenableBuilder<String?>(valueListenable: _selectedProjIdNotifier, builder: (context, val, child) {
                   return Text(val ?? S.current.push_ctrl_panel_gms_project, style: genTextTheme.bodyLarge);
               },)),
-                Align(alignment: Alignment.centerRight, child: SizedBox(width: 16, height: 16, child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_CHEVRON_DOWN_SVG),
+                Align(alignment: Alignment.centerRight, child: SizedBox(width: 16, height: 16, child: SvgPicture.asset(R.icChevronDown,
                     height: 16, width: 16, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn))))
               ])),
               isExpanded: true, dropdownStyleData: DropdownStyleData(maxHeight: 200, decoration: BoxDecoration(color: currColorScheme.primaryContainer, borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(12), bottomRight: Radius.circular(12)))),
@@ -130,7 +128,7 @@ class _PushGmsCtrlScreen extends State<PushGmsCtrlScreen> {
                 child: TextButton(style: TextButton.styleFrom(backgroundColor: currColorScheme.secondaryContainer, foregroundColor: currColorScheme.tertiary,
                     shape: const CircleBorder(), padding: const EdgeInsets.all(4)), onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(settings: Screens.projCtor.routeSettings(), builder: (context) => const GmsPushProjectCtorScreen()));
-                }, child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_PLUS_SVG), width: 20, height: 20,
+                }, child: SvgPicture.asset(R.icPlus, width: 20, height: 20,
                     colorFilter: ColorFilter.mode(currColorScheme.secondary, BlendMode.srcIn)))
             ),
             const Padding(padding: EdgeInsets.only(left: 8)),
@@ -139,7 +137,7 @@ class _PushGmsCtrlScreen extends State<PushGmsCtrlScreen> {
                 return TextButton(style: TextButton.styleFrom(backgroundColor: currColorScheme.secondaryContainer, foregroundColor: currColorScheme.tertiary,
                     shape: const CircleBorder(), padding: const EdgeInsets.all(4)), onPressed: val == null ? null : () {
                   Navigator.of(context).push(MaterialPageRoute(settings: Screens.projCtor.routeSettings(), builder: (context) => GmsPushProjectCtorScreen(initConfig: gmsController.projects[val])));
-                }, child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_EDIT_SVG), width: 20, height: 20,
+                }, child: SvgPicture.asset(R.icEdit, width: 20, height: 20,
                   colorFilter: ColorFilter.mode(val == null ? currColorScheme.surface : currColorScheme.secondary, BlendMode.srcIn),));
               },),
             ),
@@ -150,7 +148,7 @@ class _PushGmsCtrlScreen extends State<PushGmsCtrlScreen> {
                     shape: const CircleBorder(), padding: const EdgeInsets.all(4)), onPressed: val == null ? null : () {
                   gmsController.removeProj(projId: val);
                   AppSnackBar.showSimpleTextSnack(context, text: val + " - " + S.current.general_deleted);
-                }, child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_TRASH_SVG), width: 20, height: 20,
+                }, child: SvgPicture.asset(R.icTrash, width: 20, height: 20,
                   colorFilter: ColorFilter.mode(val == null ? currColorScheme.surface : currColorScheme.secondary, BlendMode.srcIn)));
               },),
             )
@@ -201,7 +199,7 @@ class _PushGmsCtrlScreen extends State<PushGmsCtrlScreen> {
                 Navigator.of(context).push(MaterialPageRoute(settings: Screens.notePicker.routeSettings(), builder: (context) => NotePickerScreen(title: S.current.push_target_history, items: targets, onPick: (selected) {
                   _targetTextController.text = selected;
                 })));
-            }, child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_HISTORY_SVG), width: 20, height: 20, colorFilter: ColorFilter.mode(currColorScheme.secondary, BlendMode.srcIn))
+            }, child: SvgPicture.asset(R.icHistory, width: 20, height: 20, colorFilter: ColorFilter.mode(currColorScheme.secondary, BlendMode.srcIn))
             )
           ))
         ]),

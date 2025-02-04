@@ -11,24 +11,48 @@ dependencies:
     sdk: flutter
 
   # Native payload dependencies
-  shared_preferences: 2.3.2
+  shared_preferences: 2.5.1
 
   pusher_core:
     path: ../pusher_core
 
-  flutter_svg: 2.0.10+1 # SVG render engine
+  flutter_svg: 2.0.17 # SVG render engine
 
   intl: ^0.19.0
+
+# Intl hint https://pub.dev/packages/intl_utils
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: en
+  arb_dir: lib/src/l10n
+  output_dir: lib/src/generated
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: any
 
-  # Setup: pub global activate flutter_asset_generator
-  flutter_asset_generator: 1.2.0 # Assets map generator (fgen --no-watch --no-preview -n R -o lib/src/generated/assets.dart)
+  # Setup: flutter pub global flutter_gen
+  flutter_gen: 5.8.0 # Assets map generator (fluttergen -c pubspec.yaml)
 
-flutter:
-  uses-material-design: true
+flutter_gen:
+
   assets:
-    - assets/
+    # exclude:
+    # - folder-your-want-to-exclude/**
+    # - specified-asset.jpg
+    outputs:
+      class_name: R
+      package_parameter_enabled: true # Package assets outside access
+
+  integrations:
+    image: false
+    flutter_svg: false
+
+  output: lib/src/generated

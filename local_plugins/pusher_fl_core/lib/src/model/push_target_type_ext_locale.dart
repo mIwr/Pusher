@@ -1,5 +1,6 @@
 
-import 'package:pusher/generated/l10n.dart';
+import '../generated/l10n.dart';
+
 import 'package:pusher_core/pusher_core_model.dart';
 
 extension PushTargetTypeExtLocale on PushTargetType {

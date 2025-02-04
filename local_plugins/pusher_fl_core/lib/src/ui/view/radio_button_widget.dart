@@ -11,7 +11,7 @@ class RadioButton<T> extends StatelessWidget {
   final EdgeInsets spacing;
   final ValueChanged<T?> onChanged;
 
-  const RadioButton({
+  const RadioButton({super.key,
     required this.value,
     required this.groupValue,
     this.semanticLabel = "",

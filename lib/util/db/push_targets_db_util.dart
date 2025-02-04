@@ -41,7 +41,9 @@ abstract final class PushTargetsDbUtil {
 
   static Future<void> _insertOrReplaceItems(String tableName, {required List<MapEntry<String, String>> items}) async {
     final Map<String, dynamic> itemsMap = {};
-    items.forEach((element) => itemsMap[element.key] = element.value);
+    for (final element in items) {
+      itemsMap[element.key] = element.value;
+    }
     await DbWrapUtil.insertOrReplaceDataIn(boxContainer: tableName, values: itemsMap);
   }
 

@@ -27,7 +27,7 @@ class AppTextField extends StatelessWidget {
   final void Function()? onTap;
   final void Function(String value)? onChanged;
 
-  const AppTextField({this.hintText = "", this.prefix, this.prefixIcon, this.prefixText, this.prefixStyle, this.suffix, this.suffixIcon, this.maxLines = 1,
+  const AppTextField({super.key, this.hintText = "", this.prefix, this.prefixIcon, this.prefixText, this.prefixStyle, this.suffix, this.suffixIcon, this.maxLines = 1,
     this.keyboardType = TextInputType.text, this.textInputAction = TextInputAction.done, this.textCapitalization = TextCapitalization.none,
     this.autocorrect = true, this.autofocus = true,
     this.enableSuggestions = true, this.obscureText = false, this.readonly = false,

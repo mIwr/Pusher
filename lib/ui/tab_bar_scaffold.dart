@@ -59,8 +59,8 @@ class _TabBarScaffoldState extends State<TabBarScaffold> {
     }
 
     final bottomBar = CuperBottomTabBar(key: _bottomTabBarKey, tabBarItems: [
-      CuperTabBarItem(title: "GMS", onSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_GOOGLE_SVG), offSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_GOOGLE_SVG)).buildItem(context),
-      CuperTabBarItem(title: "HMS", onSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_HUAWEI_SVG), offSvgIcon: AssetsUtil.getAssetPath(R.ASSETS_IC_HUAWEI_SVG)).buildItem(context),
+      CuperTabBarItem(title: "GMS", onSvgIcon: R.icGoogle, offSvgIcon: R.icGoogle).buildItem(context),
+      CuperTabBarItem(title: "HMS", onSvgIcon: R.icHuawei, offSvgIcon: R.icHuawei).buildItem(context),
     ],
       onTap: (newIndex) {
       final navKey = _navigationKeys[newIndex];

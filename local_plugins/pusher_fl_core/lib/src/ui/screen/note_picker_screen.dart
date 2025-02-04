@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../generated/assets.dart';
-import '../../util/assets_util.dart';
+import '../../generated/assets.gen.dart';
 
 class NotePickerScreen extends StatelessWidget {
 
@@ -25,7 +24,7 @@ class NotePickerScreen extends StatelessWidget {
         Align(alignment: Alignment.topLeft, child: SizedBox(width: 32, height: 32, child: TextButton(onPressed: () => Navigator.of(context).pop(),
             style: TextButton.styleFrom(backgroundColor: Colors.transparent, foregroundColor: currColorScheme.tertiary,
                 shape: const CircleBorder(), padding: const EdgeInsets.only(left: 16), alignment: Alignment.centerLeft),
-            child: SvgPicture.asset(AssetsUtil.getAssetPath(R.ASSETS_IC_CHEVRON_LEFT_SVG), colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
+            child: SvgPicture.asset(R.icChevronLeft, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
         )),
         Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: primaryTextTheme.displayMedium))
       ],)),

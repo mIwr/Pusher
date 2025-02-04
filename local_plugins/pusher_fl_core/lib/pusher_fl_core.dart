@@ -6,14 +6,15 @@ export 'src/screens_enum.dart';
 export 'src/controller/locale_controller.dart';
 export 'src/controller/theme_controller.dart';
 
-export 'src/generated/assets.dart';
+export 'src/generated/assets.gen.dart';
+export 'src/generated/l10n.dart';
 
 export 'src/extension/color_ext.dart';
 export 'src/extension/navigator_ext.dart';
 
 export 'src/model/app_properties.dart';
+export 'src/model/push_target_type_ext_locale.dart';
 
-export 'src/util/assets_util.dart';
 export 'src/util/color_util.dart';
 export 'src/util/locale_util.dart';
 export 'src/util/theme_util.dart';

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:pusher/status_bar_observer.dart';
 import 'package:pusher/system_nav_bar_observer.dart';
-import 'package:pusher/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pusher_fl_core/pusher_fl_core.dart';
 import 'package:pusher_fl_core/pusher_fl_core_ui.dart';

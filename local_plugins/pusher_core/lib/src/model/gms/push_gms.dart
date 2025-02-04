@@ -31,7 +31,7 @@ final class PushGms extends PushBase {
     if (target.key == PushTargetType.token) {
       map["token"] = target.value;
     } else {
-      map["topic"] = target.key;
+      map["topic"] = target.value;
     }
     final gmsNotification = notification;
     if (gmsNotification != null) {

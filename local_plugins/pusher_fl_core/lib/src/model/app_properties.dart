@@ -44,17 +44,17 @@ class AppProperties
   bool get geoPermissionReminder {return _flags.getFlagPropertyValue(1);}
   set geoPermissionReminder(bool newState) {_flags.setFlagPropertyValue(1, newState);}
 
-  bool get pushNotifications {return _flags.getFlagPropertyValue(2);}
-  set pushNotifications(bool newState) {_flags.setFlagPropertyValue(2, newState);}
+  bool get unoccupied {return _flags.getFlagPropertyValue(2);}
+  set unoccupied(bool newState) {_flags.setFlagPropertyValue(2, newState);}
 
-  bool get pushPersonal {return pushNotifications && _flags.getFlagPropertyValue(3);}
-  set pushPersonal(bool newState) {_flags.setFlagPropertyValue(3, newState);}
+  bool get unoccupied2 {return _flags.getFlagPropertyValue(3);}
+  set unoccupied2(bool newState) {_flags.setFlagPropertyValue(3, newState);}
 
-  bool get pushApplications {return pushNotifications && _flags.getFlagPropertyValue(4);}
-  set pushApplications(bool newState) {_flags.setFlagPropertyValue(4, newState);}
+  bool get unoccupied3 {return _flags.getFlagPropertyValue(4);}
+  set unoccupied3(bool newState) {_flags.setFlagPropertyValue(4, newState);}
 
-  bool get pushFeed{return pushNotifications && _flags.getFlagPropertyValue(5);}
-  set pushFeed(bool newState) {_flags.setFlagPropertyValue(5, newState);}
+  bool get unoccupied4{return _flags.getFlagPropertyValue(5);}
+  set unoccupied4(bool newState) {_flags.setFlagPropertyValue(5, newState);}
 
   ///Use user-defined day/night theme
   bool get _userDefinedThemeMode {return _flags.getFlagPropertyValue(6);}

@@ -9,18 +9,19 @@ Fully cross-platform Pusher Flutter core. Contains:
 
 ## General
 
-- Dart SDK >=3.4.0
+- Dart SDK >=3.3.4
+- Flutter SDK >= 3.19.6
 
 ## Project structure
 
-| Structure element    | Description                                                                                                             |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Package assets       | Located at **[./assets](./assets)**. Contains media files                                                               |
-| Assets indexator     | Powered by [FlutterGen](https://pub.dev/packages/flutter_gen). Generates [R class](./lib/src/generated/assets.gen.dart) |
-| String localizations | Located at **[./l10n](./lib/src/l10n)**. For now supports english and russian languages                                 |
-| UI controllers       | Located at **[./lib/src/controller](./lib/src/controller)**                                                             |
-| UI                   | Located at **[./lib/src/ui](./lib/src/ui)**                                                                             |
-| Flutter extensions   | Located at **[./lib/src/extension](./lib/src/extension)**                                                               |
+| Structure element    | Description                                                                                                                   |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Package assets       | Located at **[./assets](./assets)**. Contains media files                                                                     |
+| Assets indexator     | Powered by [FlutterGen](https://pub.dev/packages/flutter_gen). Generates [RAssets class](./lib/src/generated/assets.gen.dart) |
+| String localizations | Located at **[./l10n](./lib/src/l10n)**. For now supports english and russian languages                                       |
+| UI controllers       | Located at **[./lib/src/controller](./lib/src/controller)**                                                                   |
+| UI                   | Located at **[./lib/src/ui](./lib/src/ui)**                                                                                   |
+| Flutter extensions   | Located at **[./lib/src/extension](./lib/src/extension)**                                                                     |
 
 **Assets re-index cmd**
 

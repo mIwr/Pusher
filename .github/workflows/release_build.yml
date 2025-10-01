@@ -25,7 +25,7 @@ jobs:
     outputs:
       release_ver: ${{ steps.app_proj_version.outputs.version-number }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -45,7 +45,7 @@ jobs:
         run: cd build/linux/x64/release/bundle && zip -r pusher_linux_amd64 .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: uploaded_linux_amd64
           path: build/linux/x64/release/bundle/pusher_linux_amd64.zip
@@ -54,8 +54,8 @@ jobs:
     name: Build android release build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
@@ -73,7 +73,7 @@ jobs:
       - run: flutter build apk --release
 
       - name: Upload signed APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: uploaded_apk
           path: build/app/outputs/flutter-apk/app-release.apk
@@ -82,7 +82,7 @@ jobs:
     name: Build windows release build
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -93,19 +93,20 @@ jobs:
         run: Compress-Archive -Path build/windows/x64/runner/Release -Destination pusher_win_x64.zip
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: uploaded_win_x64
           path: pusher_win_x64.zip
           
-  git_release_draft:
+  github_release_draft:
     name: Make Github release draft
     needs:
-      - build_win_x64
-      - build_linux_x64
+      - build_linux_app
+      - build_android_app
+      - build_win_app
     env:
       GITHUB_TOKEN: ${{ secrets.RELEASE_BUILD_TOKEN }}
-      RELEASE_VERSION: ${{ needs.build_win_x64.outputs.release_ver }}
+      RELEASE_VERSION: ${{ needs.build_linux_app.outputs.release_ver }}
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     runs-on: ubuntu-latest
@@ -118,99 +119,80 @@ jobs:
           tag_name: ${{ env.RELEASE_VERSION }}
           release_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}
           draft: true
-          
-  github_upload_release_artifacts:
-    name: Upload build artifacts to GIthub release
+
+  github_upload_win64_artifact:
+    name: Upload Windows x64 build artifact to Github release
     needs:
       - github_release_draft
-      - build_win_x64
-      - build_linux_x64
-    env:
-      GITHUB_TOKEN: ${{ secrets.RELEASE_BUILD_TOKEN }}
-      RELEASE_VERSION: ${{ needs.build_win_x64.outputs.release_ver }}
-      UPLOAD_URL: ${{ needs.github_release_draft.outputs.upload_url }}
-    runs-on: ubuntu-latest
-    
-    steps: 
-      - name: Download win-x64 artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: win-x64
-          
-      - name: Upload win-x64 artifact to release assets
-        uses: actions/upload-release-asset@v1.0.1
-        with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: sapi_win-x64.zip
-          asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}_win-x64.zip
-          asset_content_type: application/zip
-          
-      - name: Download linux-x64 artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: app_linux-x64
-          
-      - name: Upload linux-x64 artifact to release assets
-        uses: actions/upload-release-asset@v1.0.1
-        with:
-          upload_url: ${{ env.UPLOAD_URL }}
-          asset_path: sqlcipher-ed_linux-x64.zip
-          asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}_linux-x64.zip
-          asset_content_type: application/zip
-    name: Make Github release draft with built artifacts
-    needs:
       - build_linux_app
-      - build_android_app
       - build_win_app
-    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.RELEASE_BUILD_TOKEN }}
       RELEASE_VERSION: ${{ needs.build_linux_app.outputs.release_ver }}
+      UPLOAD_URL: ${{ needs.github_release_draft.outputs.upload_url }}
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ env.RELEASE_VERSION }}
-          release_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}
-          draft: true
-
-      - name: Download linux artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: uploaded_linux_amd64
-
-      - name: Upload linux artifact to release assets
-        uses: actions/upload-release-asset@v1.0.1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: pusher_linux_amd64.zip
-          asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}-linux-amd64.zip
-          asset_content_type: application/zip
-
       - name: Download win artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v5
         with:
           name: uploaded_win_x64
 
       - name: Upload win artifact to release assets
         uses: actions/upload-release-asset@v1.0.1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ env.UPLOAD_URL }}
           asset_path: pusher_win_x64.zip
           asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}-win-x64.zip
           asset_content_type: application/zip
 
+  github_upload_linux64_artifact:
+    name: Upload Linux x64 build artifact to Github release
+    needs:
+      - github_release_draft
+      - build_linux_app
+    env:
+      GITHUB_TOKEN: ${{ secrets.RELEASE_BUILD_TOKEN }}
+      RELEASE_VERSION: ${{ needs.build_linux_app.outputs.release_ver }}
+      UPLOAD_URL: ${{ needs.github_release_draft.outputs.upload_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download linux artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: uploaded_linux_amd64
+
+      - name: Upload linux artifact to release assets
+        uses: actions/upload-release-asset@v1.0.1
+        with:
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: pusher_linux_amd64.zip
+          asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}-linux-amd64.zip
+          asset_content_type: application/zip
+
+  github_upload_android_artifact:
+    name: Upload universal Android build artifact to Github release
+    needs:
+      - github_release_draft
+      - build_linux_app
+      - build_android_app
+    env:
+      GITHUB_TOKEN: ${{ secrets.RELEASE_BUILD_TOKEN }}
+      RELEASE_VERSION: ${{ needs.build_linux_app.outputs.release_ver }}
+      UPLOAD_URL: ${{ needs.github_release_draft.outputs.upload_url }}
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Download android artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v5
         with:
           name: uploaded_apk
 
       - name: Upload android artifact to release assets
         uses: actions/upload-release-asset@v1.0.1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ env.UPLOAD_URL }}
           asset_path: app-release.apk
           asset_name: ${{ github.event.repository.name }} ${{ env.RELEASE_VERSION }}-android-universal.apk
           asset_content_type: application/zip

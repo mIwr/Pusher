@@ -41,7 +41,7 @@ base class AndroidMsg {
   }
 
   static AndroidMsg from(Map<String, dynamic> json) {
-    var duration = Duration(days: 1);
+    var duration = const Duration(days: 1);
     if (json.containsKey("ttl") && json["ttl"] is String) {
       final String val = json["ttl"];
       final parsed = int.tryParse(val.toLowerCase().replaceAll('s', ""));

@@ -55,11 +55,11 @@ class PushHms {
 
   static PushHms? from(Map<String, dynamic> json) {
     final basePush = PushBase.from(json);
-    var target = MapEntry<PushTargetType, String>(PushTargetType.token, "");
+    var target = const MapEntry(PushTargetType.token, "");
     if (json.containsKey("token")) {
-      target = MapEntry<PushTargetType, String>(PushTargetType.token, json["token"]);
+      target = MapEntry(PushTargetType.token, json["token"]);
     } else if (json.containsKey("topic")) {
-      target = MapEntry<PushTargetType, String>(PushTargetType.topic, json["topic"]);
+      target = MapEntry(PushTargetType.topic, json["topic"]);
     }
     HmsNotification? genNotification;
     if (json.containsKey("notification") && json["notification"] is Map) {

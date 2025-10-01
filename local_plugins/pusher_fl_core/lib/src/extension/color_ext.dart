@@ -2,6 +2,7 @@
 import 'dart:math';
 import 'dart:ui';
 
+///Flutter Color extension
 extension ColorExt on Color {
 
   ///Luminance according WCAG 2.1

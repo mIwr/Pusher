@@ -16,12 +16,12 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+    plugins {}
 }
 
 plugins {
     id "dev.flutter.flutter-plugin-loader" version "1.0.0"
-    id "com.android.application" version '8.4.0' apply false
-    id "org.jetbrains.kotlin.android" version "1.9.23" apply false
+    id "com.android.application" version '8.6.0' apply false // Last version for Flutter 3.19.6
 }
 
 include ":app"

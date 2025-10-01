@@ -7,8 +7,8 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
-class R {
-  R._();
+class RAssets {
+  const RAssets._();
 
   static const String package = 'pusher_fl_core';
 
@@ -33,17 +33,17 @@ class R {
 
   /// List of all assets
   static List<String> get values => [
-        icChevronDown,
-        icChevronLeft,
-        icChevronRight,
-        icChevronUp,
-        icEdit,
-        icGoogle,
-        icHistory,
-        icHuawei,
-        icPlus,
-        icSearch,
-        icSettings,
-        icTrash
-      ];
+    icChevronDown,
+    icChevronLeft,
+    icChevronRight,
+    icChevronUp,
+    icEdit,
+    icGoogle,
+    icHistory,
+    icHuawei,
+    icPlus,
+    icSearch,
+    icSettings,
+    icTrash,
+  ];
 }

@@ -12,42 +12,46 @@ import 'intl/messages_all.dart';
 // ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
 // ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
-class S {
-  S();
+class FlCoreLocalizations {
+  FlCoreLocalizations();
 
-  static S? _current;
+  static FlCoreLocalizations? _current;
 
-  static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+  static FlCoreLocalizations get current {
+    assert(
+      _current != null,
+      'No instance of FlCoreLocalizations was loaded. Try to initialize the FlCoreLocalizations delegate before accessing FlCoreLocalizationFlCoreLocalizations.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
-  static Future<S> load(Locale locale) {
+  static Future<FlCoreLocalizations> load(Locale locale) {
     final name = (locale.countryCode?.isEmpty ?? false)
         ? locale.languageCode
         : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      final instance = S();
-      S._current = instance;
+      final instance = FlCoreLocalizations();
+      FlCoreLocalizations._current = instance;
 
       return instance;
     });
   }
 
-  static S of(BuildContext context) {
-    final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+  static FlCoreLocalizations of(BuildContext context) {
+    final instance = FlCoreLocalizations.maybeOf(context);
+    assert(
+      instance != null,
+      'No instance of FlCoreLocalizations present in the widget tree. Did you add FlCoreLocalizations.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
-  static S? maybeOf(BuildContext context) {
-    return Localizations.of<S>(context, S);
+  static FlCoreLocalizations? maybeOf(BuildContext context) {
+    return Localizations.of<FlCoreLocalizations>(context, FlCoreLocalizations);
   }
 
   /// `Add new`
@@ -342,62 +346,32 @@ class S {
 
   /// `Accept`
   String get general_accept {
-    return Intl.message(
-      'Accept',
-      name: 'general_accept',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Accept', name: 'general_accept', desc: '', args: []);
   }
 
   /// `Add`
   String get general_add {
-    return Intl.message(
-      'Add',
-      name: 'general_add',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Add', name: 'general_add', desc: '', args: []);
   }
 
   /// `Deleted`
   String get general_deleted {
-    return Intl.message(
-      'Deleted',
-      name: 'general_deleted',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Deleted', name: 'general_deleted', desc: '', args: []);
   }
 
   /// `Send`
   String get general_send {
-    return Intl.message(
-      'Send',
-      name: 'general_send',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Send', name: 'general_send', desc: '', args: []);
   }
 
   /// `Search`
   String get general_search {
-    return Intl.message(
-      'Search',
-      name: 'general_search',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Search', name: 'general_search', desc: '', args: []);
   }
 
   /// `Topic`
   String get general_topic {
-    return Intl.message(
-      'Topic',
-      name: 'general_topic',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Topic', name: 'general_topic', desc: '', args: []);
   }
 
   /// `Device token`
@@ -411,7 +385,8 @@ class S {
   }
 }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<S> {
+class AppLocalizationDelegate
+    extends LocalizationsDelegate<FlCoreLocalizations> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
@@ -424,7 +399,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<S> load(Locale locale) => S.load(locale);
+  Future<FlCoreLocalizations> load(Locale locale) =>
+      FlCoreLocalizations.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 

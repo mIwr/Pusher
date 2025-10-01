@@ -8,6 +8,7 @@ class GmsApnsNotificationConfig extends ApnsMsg {
 
   const GmsApnsNotificationConfig({required super.headers, required super.payload, this.fcmOptions});
 
+  @override
   Map<String, dynamic> asMap() {
     final map = super.asMap();
     final fcmOptionsVal = fcmOptions;

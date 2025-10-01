@@ -7,8 +7,7 @@ import 'dart:ui' show ImageFilter;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../theme/app_day_theme.dart';
-import '../../theme/app_shadow_theme_ext.dart';
+import '../../../extension/theme_data_ext.dart';
 
 // Standard iOS 10 tab bar height.
 const double _kTabBarHeight = 50.0;
@@ -102,12 +101,12 @@ class CustomCupertinoTabBar extends CupertinoTabBar {
     );
 
     final currTheme = Theme.of(context);
-    final shadowExt = currTheme.extension<AppShadowThemeExt>() ?? AppDayTheme.shadows;
+    final shadowExt = currTheme.shadows;
 
     final Color inactive = CupertinoDynamicColor.resolve(inactiveColor, context);
     Widget result = DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
         boxShadow: [shadowExt.navBarShadow],
         border: resolvedBorder,
         color: backgroundColor,
@@ -200,7 +199,7 @@ class CustomCupertinoTabBar extends CupertinoTabBar {
     final labelText = item.label;
     return <Widget>[
       active ? item.activeIcon : item.icon,
-      if (labelText != null) Padding(padding: EdgeInsets.only(top: 2, bottom: 2), child: Text(labelText)),
+      if (labelText != null) Padding(padding: const EdgeInsets.only(top: 2, bottom: 2), child: Text(labelText)),
     ];
   }
 

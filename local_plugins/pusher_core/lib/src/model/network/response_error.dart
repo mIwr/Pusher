@@ -1,16 +1,13 @@
 
-///Represents parsed response error
+///Represents response error
 class ResponseError
 {
 
   static const kUnknownError = ResponseError(statusMsg: "Unknown error");
-
   ///Response status message
   final String statusMsg;
-  ///API error string
-  final String? apiError;
 
-  const ResponseError({required this.statusMsg, this.apiError});
+  const ResponseError({required this.statusMsg});
 
   @override
   String toString() {

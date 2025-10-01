@@ -175,7 +175,7 @@ final class HmsAndroidNotification extends AndroidMsgNotification{
     if (json.containsKey("multi_lang_key") && json["multi_lang_key"] is Map) {
       multiLangKey = Map.from(json["multi_lang_key"]);
     }
-    var clickAction = HmsAndroidMsgClickAction(type: HmsAndroidMsgClickActionType.startApp);
+    var clickAction = const HmsAndroidMsgClickAction(type: HmsAndroidMsgClickActionType.startApp);
     if (json["click_action"] is Map) {
       final Map<String, dynamic> map = Map.from(json["click_action"]);
       final parsed = HmsAndroidMsgClickAction.from(map);

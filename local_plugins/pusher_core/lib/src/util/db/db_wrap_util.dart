@@ -1,9 +1,7 @@
 
-import 'dart:io';
+import 'package:hive/hive.dart';
 
-import 'package:flutter/foundation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
+import '../../global_constants.dart';
 
 ///Represents Hive's basis DB operations
 abstract class DbWrapUtil {
@@ -11,29 +9,58 @@ abstract class DbWrapUtil {
   static const kAppDbLocation = "pusher";
 
   ///Checks Hive DB existence
-  static Future<bool> exists({required String boxContainer}) async {
-    return await Hive.boxExists(boxContainer);
+  static Future<bool> exists({required String boxContainer}) {
+    return Hive.boxExists(boxContainer);
+  }
+
+  static Future<Map<String, dynamic>> getItemDataFrom({required String boxContainer, required String key}) async {
+    final boxExists = await exists(boxContainer: boxContainer);
+    if (!boxExists) {
+      return {};
+    }
+
+    try {
+      final box = await Hive.openBox(boxContainer);
+      if (box.isEmpty) {
+        return {};
+      }
+      final item = box.get(key);
+      if (item == null || item is Map == false) {
+        return {};
+      }
+      final Map<String, dynamic> map = Map.from(item);
+      return map;
+      //Not close box after use is OK, according [official doc](https://docs.hivedb.dev/#/basics/boxes?id=close-box)
+    } catch(error) {
+      if (kDartDebugMode) {
+        print("Unable read data from Hive DB on '" + boxContainer + "' box container");
+      }
+      print(error);
+      await deleteBoxContainer(boxContainer);
+    }
+    return {};
   }
 
   ///Reads all data from defined box container
   ///[boxContainer] Hive DB name
   static Future<Map<String, dynamic>> getDataFrom({required String boxContainer}) async {
-    Map<String, dynamic> map = {};
     final boxExists = await exists(boxContainer: boxContainer);
     if (!boxExists) {
-      return map;
+      return {};
     }
+    final Map<String, dynamic> map = {};
     try {
       final box = await Hive.openBox(boxContainer);
-      if (box.isNotEmpty) {
-        final keys = List.from(box.keys);
-        for (final key in keys) {
-          map[key] = box.get(key);
-        }
+      if (box.isEmpty) {
+        return map;
+      }
+      final List<String> keys = List.from(box.keys);
+      for (final key in keys) {
+        map[key] = box.get(key);
       }
       //Not close box after use is OK, according [official doc](https://docs.hivedb.dev/#/basics/boxes?id=close-box)
     } catch(error) {
-      if (kDebugMode) {
+      if (kDartDebugMode) {
         print("Unable read data from Hive DB on '" + boxContainer + "' box container");
       }
       print(error);
@@ -57,7 +84,7 @@ abstract class DbWrapUtil {
       }
       //Not close box after use is OK, according [official doc](https://docs.hivedb.dev/#/basics/boxes?id=close-box)
     } catch (error) {
-      if (kDebugMode) {
+      if (kDartDebugMode) {
         print("Unable insert data to Hive DB on '" + boxContainer + "' box container");
       }
       print(error);
@@ -84,7 +111,7 @@ abstract class DbWrapUtil {
       }
       //Not close box after use is OK, according [official doc](https://docs.hivedb.dev/#/basics/boxes?id=close-box)
     } catch (error) {
-      if (kDebugMode) {
+      if (kDartDebugMode) {
         print("Unable delete items in Hive DB on '" + boxContainer + "' box container");
       }
       print(error);
@@ -108,33 +135,9 @@ abstract class DbWrapUtil {
     } catch (error, stacktrace) {
       print("Unable delete box container '" + boxContainer + "' in Hive DB");
       print(error);
-      if (kDebugMode) {
+      if (kDartDebugMode) {
         print(stacktrace);
       }
-    }
-  }
-
-  ///Generates database file path by it's filename
-  static Future<File> getDbPath(String filename) async {
-    final docsDir = await getApplicationDocumentsDirectory();
-    final dbFile = File(docsDir.path + '/' + kAppDbLocation + '/' + filename + ".hive");
-
-    return dbFile;
-  }
-
-  ///Removes all Hive box containers
-  static Future<void> deleteDb() async {
-    try {
-      final docsDir = await getApplicationDocumentsDirectory();
-      final dbDir = Directory(docsDir.path + '/' + kAppDbLocation);
-      if (await dbDir.exists()) {
-        await dbDir.delete(recursive: true);
-      }
-    } catch (error) {
-      if (kDebugMode) {
-        print("Unable delete Hive DB");
-      }
-      print(error);
     }
   }
 }

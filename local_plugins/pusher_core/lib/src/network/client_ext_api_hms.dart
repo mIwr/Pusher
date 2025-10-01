@@ -1,5 +1,5 @@
 
-import 'client_mp.dart';
+import 'client.dart';
 import '../extension/string_ext.dart';
 import '../model/hms/android/hms_android_notification_config.dart';
 import '../model/hms/apns/hms_apns_notification_config.dart';
@@ -20,11 +20,11 @@ extension ApiHMS on Client {
     final func = ApiFunction(baseUrl: "https://oauth-login.cloud.huawei.com/", headers: headers, path: "oauth2/v3/token", method: "POST", formData: formData.utf8Bytes);
     final sendRes = await sendAsync(func);
     HmsAccessToken? accessTk;
-    if (sendRes.success && sendRes.data is Map) {
-      final Map<String, dynamic> jsonMap = Map.from(sendRes.data);
+    if (sendRes.success && sendRes.result is Map) {
+      final Map<String, dynamic> jsonMap = Map.from(sendRes.result);
       accessTk = HmsAccessToken.from(jsonMap);
     }
-    return ResponseResult(statusCode: sendRes.statusCode, data: accessTk, error: sendRes.error);
+    return ResponseResult(statusCode: sendRes.statusCode, result: accessTk, error: sendRes.error);
   }
 
   Future<ResponseResult<HMSResponse>> sendHMSPush({required String oauthToken, required String target, required String projectID, required PushTargetType targetType, bool validateOnly = false, required String data, HmsNotification? notification, HmsAndroidNotificationConfig? android, HmsApnsNotificationConfig? apns}) async {
@@ -45,9 +45,9 @@ extension ApiHMS on Client {
     final sendRes = await sendAsync(func);
     HMSResponse? parsedResponse;
     if (sendRes.success) {
-      final Map<String, dynamic> jsonMap = Map.from(sendRes.data);
+      final Map<String, dynamic> jsonMap = Map.from(sendRes.result);
       parsedResponse = HMSResponse.from(jsonMap);
     }
-    return ResponseResult(statusCode: sendRes.statusCode, data: parsedResponse, error: sendRes.error);
+    return ResponseResult(statusCode: sendRes.statusCode, result: parsedResponse, error: sendRes.error);
   }
 }

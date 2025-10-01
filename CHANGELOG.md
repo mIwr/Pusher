@@ -1,7 +1,7 @@
 #  Changelog
 
-## 1.0.3 (7)
-**DATE_TODO**
+## 1.0.3 (8)
+**01.10.25**
 
 **Core-related changes**
 

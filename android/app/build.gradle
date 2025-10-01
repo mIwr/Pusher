@@ -1,6 +1,5 @@
 plugins {
     id "com.android.application"
-    id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
 
@@ -33,26 +32,18 @@ android {
     if (project.android.hasProperty("namespace")) {
         namespace 'org.zeit.pusher'
     }
-    compileSdk 35 //flutter.compileSdkVersion != last Android SDK version
-    ndkVersion "26.1.10909125" //flutter.ndkVersion != actual Android NDK version
+    compileSdk 36 //flutter.compileSdkVersion != last Android SDK version
+    ndkVersion "28.2.13676358" //flutter.ndkVersion != actual Android NDK version
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = '17'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     defaultConfig {
         applicationId "org.zeit.pusher"
-        minSdkVersion 21
-        targetSdkVersion 35 //flutter.targetSdkVersion
+        minSdkVersion 24
+        targetSdkVersion 36 //flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -70,7 +61,7 @@ android {
         release {
             signingConfig signingConfigs.release
             minifyEnabled true
-            shrinkResources false // Push action icons and launcher foreground saver. True - Push messages will break
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

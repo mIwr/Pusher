@@ -45,7 +45,7 @@ class AndroidMsgLightSettings {
     final double green = map["green"] ?? 0.0;
     final double blue = map["blue"] ?? 0.0;
 
-    Duration on = Duration(milliseconds: 500);
+    var on = const Duration(milliseconds: 500);
     if (json.containsKey("light_on_duration") && json["light_on_duration"] is String) {
       final String str = json["light_on_duration"];
       final secs = double.tryParse(str.toLowerCase().replaceAll("s", ""));
@@ -53,7 +53,7 @@ class AndroidMsgLightSettings {
         on = Duration(seconds: secs.floor(), milliseconds: ((secs * 10) % 10).floor());
       }
     }
-    Duration off = Duration(milliseconds: 500);
+    var off = const Duration(milliseconds: 500);
     if (json.containsKey("light_off_duration") && json["light_off_duration"] is String) {
       final String str = json["light_off_duration"];
       final secs = double.tryParse(str.toLowerCase().replaceAll("s", ""));

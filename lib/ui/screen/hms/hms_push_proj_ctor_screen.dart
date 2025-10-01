@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pusher_core/pusher_core.dart';
 import 'package:pusher_core/pusher_core_model.dart';
 import 'package:pusher_fl_core/pusher_fl_core.dart';
@@ -54,49 +53,49 @@ class _HmsPushProjectCtorScreenState extends State<HmsPushProjectCtorScreen> {
       Padding(padding: const EdgeInsets.fromLTRB(0,16,0,0), child: Stack(alignment: Alignment.topCenter, children: [
         Align(alignment: Alignment.topLeft, child: SizedBox(width: 32, height: 32, child: TextButton(onPressed: () => Navigator.of(context).pop(),
             style: TextButton.styleFrom(backgroundColor: Colors.transparent, foregroundColor: currColorScheme.tertiary, shape: const CircleBorder(),
-                padding: const EdgeInsets.only(left: 16), alignment: Alignment.centerLeft), child: SvgPicture.asset(R.icChevronLeft, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
+                padding: const EdgeInsets.only(left: 16), alignment: Alignment.centerLeft), child: SvgPicture.asset(RAssets.icChevronLeft, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
         )),
         Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text(widget.initConfig == null
-            ? (S.current.proj_ctor_new_title + " HMS")
-            : (S.current.proj_ctor_upd_title + " HMS"), textAlign: TextAlign.center, style: primaryTextTheme.displayLarge))
+            ? (FlCoreLocalizations.current.proj_ctor_new_title + " HMS")
+            : (FlCoreLocalizations.current.proj_ctor_upd_title + " HMS"), textAlign: TextAlign.center, style: primaryTextTheme.displayLarge))
       ],)),
       Padding(padding: EdgeInsets.only(top: 32 + (primaryTextTheme.displayLarge?.fontSize ?? 24.0)),
           child: SingleChildScrollView(physics: const BouncingScrollPhysics(), padding: const EdgeInsets.fromLTRB(16, 0, 16, 0), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(S.current.proj_ctor_hms_id_hint, style: primaryTextTheme.bodyLarge),
+            Text(FlCoreLocalizations.current.proj_ctor_hms_id_hint, style: primaryTextTheme.bodyLarge),
             const Padding(padding: EdgeInsets.only(top: 8)),
-            AppTextField(hintText: S.current.proj_ctor_hms_id_hint, controller: _idTextController, keyboardType: TextInputType.number,),
+            AppTextField(hintText: FlCoreLocalizations.current.proj_ctor_hms_id_hint, controller: _idTextController, keyboardType: TextInputType.number,),
             const Padding(padding: EdgeInsets.only(top: 16)),
-            Text(S.current.proj_ctor_hms_cl_id_hint, style: primaryTextTheme.bodyLarge),
+            Text(FlCoreLocalizations.current.proj_ctor_hms_cl_id_hint, style: primaryTextTheme.bodyLarge),
             const Padding(padding: EdgeInsets.only(top: 8)),
-            AppTextField(hintText: S.current.proj_ctor_hms_cl_id_hint, controller: _clIdTextController, keyboardType: TextInputType.number,),
+            AppTextField(hintText: FlCoreLocalizations.current.proj_ctor_hms_cl_id_hint, controller: _clIdTextController, keyboardType: TextInputType.number,),
             const Padding(padding: EdgeInsets.only(top: 16)),
-            Text(S.current.proj_ctor_hms_cl_secret_hint, style: primaryTextTheme.bodyLarge),
+            Text(FlCoreLocalizations.current.proj_ctor_hms_cl_secret_hint, style: primaryTextTheme.bodyLarge),
             const Padding(padding: EdgeInsets.only(top: 8)),
-            AppTextField(hintText: S.current.proj_ctor_hms_cl_secret_hint, controller: _clSecretTextController),
+            AppTextField(hintText: FlCoreLocalizations.current.proj_ctor_hms_cl_secret_hint, controller: _clSecretTextController),
             const Padding(padding: EdgeInsets.only(top: kAppBtnHeight + 32))
           ]))),
       Align(alignment: Alignment.bottomCenter, child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: SizedBox(width: MediaQuery.of(context).size.width,
-          child: TextButtonAccent(content: S.current.general_accept, onPressed: () {
+          child: TextButtonAccent(content: FlCoreLocalizations.current.general_accept, onPressed: () {
             if (_idTextController.text.isEmpty) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_hms_id_empty_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_hms_id_empty_err);
               return;
             }
             if (_clIdTextController.text.isEmpty) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_hms_cl_id_empty_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_hms_cl_id_empty_err);
               return;
             }
             if (_clSecretTextController.text.isEmpty) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_hms_cl_secret_empty_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_hms_cl_secret_empty_err);
               return;
             }
             final id = int.tryParse(_idTextController.text);
             if (id == null) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_hms_id_invalid_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_hms_id_invalid_err);
               return;
             }
             final clId = int.tryParse(_clIdTextController.text);
             if (clId == null) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_hms_cl_id_invalid_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_hms_cl_id_invalid_err);
               return;
             }
             final proj = HmsProjectConfig(hmsId: id, clID: clId, clSecret: _clSecretTextController.text);

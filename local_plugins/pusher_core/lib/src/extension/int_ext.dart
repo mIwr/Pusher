@@ -1,3 +1,4 @@
+// ignore_for_file: camel_case_extensions
 
 import 'dart:math';
 

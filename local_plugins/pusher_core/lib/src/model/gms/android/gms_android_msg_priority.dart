@@ -1,3 +1,4 @@
+// ignore_for_file: constant_identifier_names
 
 ///Priority of a message to send to Android devices.
 ///

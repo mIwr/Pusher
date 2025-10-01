@@ -19,12 +19,12 @@ class ApiFunction {
   ///Request body map
   final Uint8List? formData;
 
-  const ApiFunction({required this.baseUrl, required this.path, required this.method, this.headers, this.queryParams, this.formData});
+  const ApiFunction({this.baseUrl = "", required this.path, required this.method, this.headers, this.queryParams, this.formData});
 
-  ApiFunction.jsonFormData({required this.baseUrl, required this.path, required this.method, this.headers, this.queryParams, Map<String, dynamic>? jsonMap}):
+  ApiFunction.jsonFormData({this.baseUrl = "", required this.path, required this.method, this.headers, this.queryParams, Map<String, dynamic>? jsonMap}):
         formData = jsonMap == null || jsonMap.isEmpty
             ? null
-            : json.encode(jsonMap).utf8Bytes;
+            : utf8.encode(json.encode(jsonMap));
 
   @override
   String toString() {

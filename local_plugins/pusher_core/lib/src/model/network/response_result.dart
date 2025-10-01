@@ -5,15 +5,20 @@ import 'response_error.dart';
 class ResponseResult<T> {
 
   ///General error code
-  static const int kStatusCodeGeneral = -1;
+  static const int kStatusCodeGeneralInvalid = -1;
   ///No connection error code
   static const int kStatusCodeNoConnection = -2;
+  ///OK status code
+  static const int kStatusCodeOK = 200;
   ///Unauthorized status code
   static const int kStatusCodeUnauthorized = 401;
+  ///Not found status code
+  static const int kStatusCodeNotFound = 404;
 
+  ///Response status code
   final int statusCode;
   ///Response payload data
-  final T? data;
+  final T? result;
   ///Response error
   final ResponseError? error;
 
@@ -27,11 +32,11 @@ class ResponseResult<T> {
   }
 
   bool get notFound {
-    return statusCode == 404;
+    return statusCode == kStatusCodeNotFound;
   }
 
   ///Success response flag
-  bool get success => error == null && data != null;
+  bool get success => error == null && statusCode >= kStatusCodeOK && statusCode < kStatusCodeOK + 100;
 
-  const ResponseResult({required this.statusCode, this.data, this.error});
+  const ResponseResult({required this.statusCode, this.result, this.error});
 }

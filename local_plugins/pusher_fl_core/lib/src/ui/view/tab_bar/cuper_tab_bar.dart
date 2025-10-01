@@ -19,6 +19,6 @@ class CuperBottomTabBar {
 
     return CustomCupertinoTabBar(items: tabBarItems, key: key, height: _TAB_HEIGHT, activeColor: currColorScheme.secondary,
         inactiveColor: currColorScheme.surface, backgroundColor: currColorScheme.secondaryContainer,
-        border: Border(), onTap: onTap);
+        border: const Border(), onTap: onTap);
   }
 }

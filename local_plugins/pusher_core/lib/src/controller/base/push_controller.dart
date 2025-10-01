@@ -5,7 +5,7 @@ import 'dart:collection';
 import 'api_controller.dart';
 import '../../model/id_retrievable.dart';
 import '../../model/push_target_type.dart';
-import '../../network/client_mp.dart';
+import '../../network/client.dart';
 
 abstract class PushController<K,T extends IdRetrievable<K>> extends ApiController {
 

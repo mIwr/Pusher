@@ -13,7 +13,7 @@ import '../model/hms/hms_response_code.dart';
 import '../model/network/response_result.dart';
 import '../model/push_target_type.dart';
 import '../network/client_ext_api_hms.dart';
-import '../network/client_mp.dart';
+import '../network/client.dart';
 
 abstract class PushHmsController extends PushController<int, HmsProjectConfig> {
   
@@ -44,7 +44,7 @@ class _PushHmsControllerImpl extends PushControllerImpl<int, HmsProjectConfig> i
     final nowUtc = DateTime.now().toUtc();
     if (accessTk == null || nowUtc.compareTo(accessTk.expiry.toUtc()) >= 0) {
       final tkRes = await apiClient.generatePushAccessToken(clId: project.clID, clSecret: project.clSecret);
-      final res = tkRes.data;
+      final res = tkRes.result;
       if (res == null) {
         return ResponseResult(statusCode: tkRes.statusCode, error: tkRes.error);
       }
@@ -55,13 +55,13 @@ class _PushHmsControllerImpl extends PushControllerImpl<int, HmsProjectConfig> i
       addOrUpdateProj(project);
     }
     final sendRes = await apiClient.sendHMSPush(oauthToken: accessTk.token, target: target, projectID: project.id.toString(), targetType: targetType, data: data, validateOnly: validateOnly, notification: notification, android: android, apns: apns);
-    final msg = sendRes.data;
+    final msg = sendRes.result;
     if (msg == null) {
       return sendRes;
     }
     final respCode = sendRes.statusCode;
     final hmsCode = msg.parsedCode;
-    if (hmsCode == HMSResponseCode.invalidTargets || respCode == 404) {
+    if (hmsCode == HMSResponseCode.invalidTargets || respCode == ResponseResult.kStatusCodeNotFound) {
       //Target not found by API -> remove
       removeTarget(target: target, projId: project.id);
       return sendRes;

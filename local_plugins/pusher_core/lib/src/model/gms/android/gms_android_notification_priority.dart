@@ -1,3 +1,4 @@
+// ignore_for_file: constant_identifier_names
 
 enum GmsAndroidNotificationPriority {
   ///If priority is unspecified, notification priority is set to PRIORITY_DEFAULT

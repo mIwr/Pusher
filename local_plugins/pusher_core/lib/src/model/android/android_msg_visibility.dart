@@ -1,4 +1,4 @@
-
+// ignore_for_file: constant_identifier_names
 
 enum AndroidMsgVisibility {
   ///The visibility is not specified. This value is equivalent to PRIVATE

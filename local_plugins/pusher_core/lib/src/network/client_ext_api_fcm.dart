@@ -1,5 +1,5 @@
 
-import 'client_mp.dart';
+import 'client.dart';
 import '../model/gms/push_gms.dart';
 import '../model/gms/android/gms_android_notification_config.dart';
 import '../model/gms/apns/gms_apns_notification_config.dart';
@@ -29,9 +29,9 @@ extension ApiFCM on Client {
     final responseResult = await sendAsync(func);
     FCMResponse? parsed;
     if (responseResult.success) {
-      final Map<String, dynamic> jsonMap = Map.from(responseResult.data);
+      final Map<String, dynamic> jsonMap = Map.from(responseResult.result);
       parsed = FCMResponse.from(jsonMap);
     }
-    return ResponseResult(statusCode: responseResult.statusCode, data: parsed, error: responseResult.error);
+    return ResponseResult(statusCode: responseResult.statusCode, result: parsed, error: responseResult.error);
   }
 }

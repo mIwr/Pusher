@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pusher_core/pusher_core.dart';
 import 'package:pusher_core/pusher_core_model.dart';
 import 'package:pusher_fl_core/pusher_fl_core.dart';
@@ -50,15 +49,15 @@ class _GmsPushProjectCtorScreenState extends State<GmsPushProjectCtorScreen> {
       Padding(padding: const EdgeInsets.fromLTRB(0,16,0,0), child: Stack(alignment: Alignment.topCenter, children: [
           Align(alignment: Alignment.topLeft, child: SizedBox(width: 32, height: 32, child: TextButton(onPressed: () => Navigator.of(context).pop(),
               style: TextButton.styleFrom(backgroundColor: Colors.transparent, foregroundColor: currColorScheme.tertiary, shape: const CircleBorder(),
-              padding: const EdgeInsets.only(left: 16), alignment: Alignment.centerLeft), child: SvgPicture.asset(R.icChevronLeft, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
+              padding: const EdgeInsets.only(left: 16), alignment: Alignment.centerLeft), child: SvgPicture.asset(RAssets.icChevronLeft, colorFilter: ColorFilter.mode(currColorScheme.primary, BlendMode.srcIn)))
           )),
           Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text(widget.initConfig == null
-              ? (S.current.proj_ctor_new_title + " GMS")
-              : (S.current.proj_ctor_upd_title + " GMS"), textAlign: TextAlign.center, style: primaryTextTheme.displayLarge))
+              ? (FlCoreLocalizations.current.proj_ctor_new_title + " GMS")
+              : (FlCoreLocalizations.current.proj_ctor_upd_title + " GMS"), textAlign: TextAlign.center, style: primaryTextTheme.displayLarge))
         ],)),
       Padding(padding: EdgeInsets.only(top: 32 + (primaryTextTheme.displayLarge?.fontSize ?? 24.0)),
           child: SingleChildScrollView(physics: const BouncingScrollPhysics(), padding: const EdgeInsets.fromLTRB(16, 0, 16, 0), child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(S.current.proj_ctor_gms_id_hint, style: primaryTextTheme.bodyLarge),
+            Text(FlCoreLocalizations.current.proj_ctor_gms_id_hint, style: primaryTextTheme.bodyLarge),
             const Padding(padding: EdgeInsets.only(top: 8)),
             ValueListenableBuilder<String?>(valueListenable: _idNotifier, builder: (context, val, child) {
               var text = "N/A";
@@ -68,9 +67,9 @@ class _GmsPushProjectCtorScreenState extends State<GmsPushProjectCtorScreen> {
               return Text(text, style: primaryTextTheme.displaySmall);
             }),
             const Padding(padding: EdgeInsets.only(top: 16)),
-            Text(S.current.proj_ctor_gms_cred_json_hint, style: primaryTextTheme.bodyLarge),
+            Text(FlCoreLocalizations.current.proj_ctor_gms_cred_json_hint, style: primaryTextTheme.bodyLarge),
             const Padding(padding: EdgeInsets.only(top: 8)),
-            AppTextField(hintText: S.current.proj_ctor_gms_cred_json_hint, maxLines: 11, controller: _apiV1CredTextController, onChanged: (newText) {
+            AppTextField(hintText: FlCoreLocalizations.current.proj_ctor_gms_cred_json_hint, maxLines: 11, controller: _apiV1CredTextController, onChanged: (newText) {
               try {
                 final Map<String, dynamic> jsonMap = json.decode(newText) ?? {};
                 final Map<String, String> map = Map.from(jsonMap);
@@ -85,13 +84,13 @@ class _GmsPushProjectCtorScreenState extends State<GmsPushProjectCtorScreen> {
             const Padding(padding: EdgeInsets.only(top: kAppBtnHeight + 32))
           ]))),
       Align(alignment: Alignment.bottomCenter, child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: SizedBox(width: MediaQuery.of(context).size.width,
-          child: TextButtonAccent(content: S.current.general_accept, onPressed: () {
+          child: TextButtonAccent(content: FlCoreLocalizations.current.general_accept, onPressed: () {
             if (_apiV1CredTextController.text.isEmpty) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_gms_cred_empty_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_gms_cred_empty_err);
               return;
             }
             if (_idNotifier.value == null || _idNotifier.value?.isEmpty == true) {
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_gms_id_empty_err);
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_gms_id_empty_err);
               return;
             }
             try {
@@ -121,7 +120,7 @@ class _GmsPushProjectCtorScreenState extends State<GmsPushProjectCtorScreen> {
               if (kDebugMode) {
                 print(error);
               }
-              AppSnackBar.showSimpleTextSnack(context, text: S.current.proj_ctor_gms_cred_empty_err + '\n' + error.toString());
+              AppSnackBar.showSimpleTextSnack(context, text: FlCoreLocalizations.current.proj_ctor_gms_cred_empty_err + '\n' + error.toString());
               return;
             }
             Navigator.of(context).pop();

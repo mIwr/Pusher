@@ -1,5 +1,5 @@
 
-import '../../network/client_mp.dart';
+import '../../network/client.dart';
 
 ///Represents base controller with API interaction
 abstract class ApiController with ApiControllerMixin {

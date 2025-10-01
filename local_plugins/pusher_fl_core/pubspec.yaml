@@ -4,26 +4,31 @@ version: 1.0.0
 publish_to: none
 
 environment:
-  sdk: ^3.4.0
+  sdk: ^3.3.4
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
-  # Native payload dependencies
-  shared_preferences: 2.5.1
+  # Native payload dependencies (Fully cross-platform)
+  shared_preferences: ^2.2.3 # Last 3.3.0 version - 2.2.3
+  flutter_secure_storage: ^9.2.4
+
+  # Flutter packages (Fully cross-platform)
+  flutter_svg: ^2.0.10+1 # SVG render engine # Last 3.3.0 version - 2.0.10+1
+  hive_flutter: ^1.1.0 # NOSQL DB
 
   pusher_core:
     path: ../pusher_core
 
-  flutter_svg: 2.0.17 # SVG render engine
-
-  intl: ^0.19.0
+  intl: any
 
 # Intl hint https://pub.dev/packages/intl_utils
 flutter_intl:
   enabled: true
-  class_name: S
+  class_name: FlCoreLocalizations
   main_locale: en
   arb_dir: lib/src/l10n
   output_dir: lib/src/generated
@@ -39,7 +44,7 @@ dev_dependencies:
   flutter_lints: any
 
   # Setup: flutter pub global flutter_gen
-  flutter_gen: 5.8.0 # Assets map generator (fluttergen -c pubspec.yaml)
+  flutter_gen: ^5.10.0 # Assets map generator (from flutter core dir: fluttergen -c pucbspec.yaml) (from root project dir: fluttergen -c local_plugins/pusher_fl_core/pubspec.yaml)
 
 flutter_gen:
 
@@ -48,7 +53,7 @@ flutter_gen:
     # - folder-your-want-to-exclude/**
     # - specified-asset.jpg
     outputs:
-      class_name: R
+      class_name: RAssets
       package_parameter_enabled: true # Package assets outside access
 
   integrations:

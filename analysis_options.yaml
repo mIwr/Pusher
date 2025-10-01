@@ -1,7 +1,6 @@
 include: package:flutter_lints/flutter.yaml
 
 linter:
-
   rules:
     avoid_print: false
     avoid_types_as_parameter_names: true
@@ -18,6 +17,5 @@ linter:
     prefer_interpolation_to_compose_strings: false
     prefer_null_aware_method_calls: true
     prefer_null_aware_operators: true
-    sized_box_for_whitespace: true
     unnecessary_new: true
     use_full_hex_values_for_flutter_colors: true

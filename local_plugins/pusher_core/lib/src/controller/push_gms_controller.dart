@@ -15,7 +15,7 @@ import '../model/gms/gms_notification.dart';
 import '../model/network/response_error.dart';
 import '../model/network/response_result.dart';
 import '../model/push_target_type.dart';
-import '../network/client_mp.dart';
+import '../network/client.dart';
 import '../network/client_ext_api_fcm.dart';
 
 ///FCM push send controller
@@ -57,7 +57,7 @@ class _PushGmsControllerImpl extends PushControllerImpl<String, GmsProjectConfig
     if (accessTk == null || nowUtc.compareTo(accessTk.expiry.toUtc()) >= 0) {
       //No or expired access token -> Generate access token
       final tkRes = await _generatePushAccessToken(config: project);
-      final res = tkRes.data;
+      final res = tkRes.result;
       if (res == null) {
         return ResponseResult(statusCode: tkRes.statusCode, error: tkRes.error);
       }
@@ -73,7 +73,7 @@ class _PushGmsControllerImpl extends PushControllerImpl<String, GmsProjectConfig
       removeTarget(target: target, projId: project.id);
       return sendRes;
     }
-    final msg = sendRes.data;
+    final msg = sendRes.result;
     if (!saveTarget || msg == null || !msg.success) {
       return sendRes;
     }
@@ -84,19 +84,19 @@ class _PushGmsControllerImpl extends PushControllerImpl<String, GmsProjectConfig
   Future<ResponseResult<AccessToken>> _generatePushAccessToken({required GmsProjectConfig config}) async {
     final projId = config.fcmId;
     if (projId.isEmpty) {
-      return ResponseResult(statusCode: ResponseResult.kStatusCodeGeneral, error: ResponseError(statusMsg: "Not found project ID on credentials"));
+      return const ResponseResult(statusCode: ResponseResult.kStatusCodeNotFound, error: ResponseError(statusMsg: "Not found project ID on credentials"));
     }
     final accountCredentials = ServiceAccountCredentials.fromJson(config.apiV1Cred);
     final List<String> scopes = ["https://www.googleapis.com/auth/cloud-platform"];
     try {
       final client = await clientViaServiceAccount(accountCredentials, scopes);
       _projectAccessTokens[projId] = client.credentials.accessToken;
-      return ResponseResult(statusCode: 200, data: client.credentials.accessToken);
+      return ResponseResult(statusCode: ResponseResult.kStatusCodeOK, result: client.credentials.accessToken);
     } catch (error) {
       print(error);
       //TODO error parsing
     }
 
-    return ResponseResult(statusCode: ResponseResult.kStatusCodeGeneral, error: ResponseError(statusMsg: "Unable to retrieve access token"));
+    return const ResponseResult(statusCode: ResponseResult.kStatusCodeGeneralInvalid, error: ResponseError(statusMsg: "Unable to retrieve access token"));
   }
 }

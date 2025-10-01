@@ -57,7 +57,7 @@ class RadioButton<T> extends StatelessWidget {
         style: TextButton.styleFrom(padding: contentPadding, foregroundColor: currColorScheme.tertiary,),
         child: Stack(alignment: Alignment.centerLeft, children: [
           _buildCheckIndicator(context),
-          Padding(padding: EdgeInsets.only(left: 34), child: title)
+          Padding(padding: const EdgeInsets.only(left: 34), child: title)
         ],
         ),
       ),

@@ -17,6 +17,15 @@ The app provides an interface for sending push messages to mobile devices. Suppo
 - Google Messaging Services (GMS) through FCM v1 HTTP API (Firebase): Android, iOS
 - Huawei Messaging Services (HMS): Android, iOS
 
+Pusher support the next platforms:
+
++ Android
++ iOS
++ Windows
++ Linux
++ macOS
+- Web
+
 ## Setup
 
 ### Firebase

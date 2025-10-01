@@ -7,9 +7,9 @@ import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 abstract class SystemNavigationBarUtil {
 
   ///Current navigation bar background color
-  static Color _navBarBg = Colors.transparent;
+  static var _navBarBg = Colors.transparent;
   ///Current navigation bar foreground style (content style)
-  static Brightness _navBarFgStyle = Brightness.light;
+  static var _navBarFgStyle = Brightness.light;
 
   ///Change status bar background and foreground colors
   static Future<void> transformNavigationBar({required Color bgColor, required Brightness fgStyle}) async {

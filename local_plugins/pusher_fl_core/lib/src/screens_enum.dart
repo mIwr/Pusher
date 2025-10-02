@@ -6,6 +6,7 @@ enum Screens {
   notePicker,
 }
 
+const kHomeRouteKey = "/push";
 const kPushGmsCtrlTabRouteKey = "/push/gms";
 const kPushHmsCtrlTabRouteKey = "/push/hms";
 const kProjCtorRouteKey = "push/proj";

@@ -1,5 +1,16 @@
 #  Changelog
 
+## 1.0.4 (9)
+**02.10.25**
+
+**Core-related changes**
+
+- Web support (canvaskit)
+
+**Other**
+
+- macOS app network access fix
+
 ## 1.0.3 (8)
 **01.10.25**
 

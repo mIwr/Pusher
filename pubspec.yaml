@@ -2,7 +2,7 @@ name: pusher
 description: Push notification sender
 
 publish_to: 'none'
-version: 1.0.3+8
+version: 1.0.4+10
 
 environment:
   sdk: ^3.3.4
@@ -21,6 +21,8 @@ dependencies:
       # ref: 'ac7143a59a098d350bbd364880e619248be953f8'
 
   dropdown_button2: 2.3.9 # Project select popup menu
+
+  universal_platform: ^1.1.0
 
   pusher_core:
     path: local_plugins/pusher_core

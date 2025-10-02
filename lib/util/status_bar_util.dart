@@ -1,10 +1,9 @@
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:pusher_fl_core/pusher_fl_core.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 ///Status bar utils
 abstract class StatusBarUtil {
@@ -32,7 +31,7 @@ abstract class StatusBarUtil {
   }
 
   static Future<void> refreshStatusBar() async {
-    if (!Platform.isAndroid && !Platform.isIOS) {
+    if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       return;
     }
     _bgColor = await FlutterStatusbarcolor.getStatusBarColor() ?? _bgColor;
@@ -41,12 +40,12 @@ abstract class StatusBarUtil {
 
   ///Change status bar background and foreground colors
   static Future<void> transformStatusBar({required Color bgColor, required Brightness fgStyle}) async {
-    if (!Platform.isAndroid && !Platform.isIOS) {
+    if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       return;
     }
     _bgColor = bgColor;
     _fgStyle = fgStyle;
-    if (Platform.isAndroid) {
+    if (UniversalPlatform.isAndroid) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: bgColor, statusBarBrightness: fgStyle, statusBarIconBrightness: fgStyle));
       return;
     }
@@ -72,14 +71,14 @@ abstract class StatusBarUtil {
   }
 
   static void hideStatusBar() {
-    if (!Platform.isAndroid && !Platform.isIOS) {
+    if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       return;
     }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
   }
 
   static void showStatusBar() {
-    if (!Platform.isAndroid && !Platform.isIOS) {
+    if (!UniversalPlatform.isAndroid && !UniversalPlatform.isIOS) {
       return;
     }
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);

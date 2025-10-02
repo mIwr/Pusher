@@ -67,7 +67,7 @@ OAuth токен генерируется с определенными [пра�
             "sound" : "default",//Notification receive system sound
             "category" : "channelName",
             "mutable-content": 0,//1 - Native iOS APNs receiver won't fire notification and send notification for preprocessing.
-            //For flutter in most cases acceptable value is 0, otherwise push-notifications at 'killed' or 'not launched' app state won't be fired.
+            //For flutter in most cases acceptable value is 0, otherwise push-notifications at 'killed' or 'not launched' app state won't be fired. Only option to use mutable pushes is Notification Service Extension, which can be implemented at pure native only without Flutter
             "content-available": 1,
             "thread-id": "channelName"
           }

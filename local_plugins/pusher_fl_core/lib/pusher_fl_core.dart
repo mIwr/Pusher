@@ -1,6 +1,7 @@
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:flutter_secure_storage/flutter_secure_storage.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:dropdown_button2/dropdown_button2.dart';
 
 export 'src/fl_core_init_helper.dart';
 export 'src/global_variables.dart';

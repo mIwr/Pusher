@@ -6,7 +6,7 @@ Supports GMS and HMS push services
 
 ## General
 
-- Dart SDK >=3.4.0
+- Dart SDK >=3.3.4
 
 ## Project structure
 

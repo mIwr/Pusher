@@ -20,8 +20,6 @@ dependencies:
       # url: 'https://github.com/Schefferbird/flutter_statusbarcolor'
       # ref: 'ac7143a59a098d350bbd364880e619248be953f8'
 
-  dropdown_button2: 2.3.9 # Project select popup menu
-
   universal_platform: ^1.1.0
 
   pusher_core:

@@ -14,7 +14,6 @@ environment:
 
 dependencies:
 
-  path: ^1.8.3
   http: ^1.2.2 # HTTP client
 
   googleapis_auth: ">=1.6.0 <3.0.0" # Firebase FCM API v1 auth

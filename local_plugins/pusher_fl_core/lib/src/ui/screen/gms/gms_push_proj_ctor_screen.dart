@@ -4,10 +4,16 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pusher_core/pusher_core.dart';
 import 'package:pusher_core/pusher_core_model.dart';
-import 'package:pusher_fl_core/pusher_fl_core.dart';
-import 'package:pusher_fl_core/pusher_fl_core_ui.dart';
+
+import '../../../generated/assets.gen.dart';
+import '../../../generated/l10n.dart';
+import '../../../global_constants.dart';
+import '../../view/app_snack_bar.dart';
+import '../../view/app_text_field.dart';
+import '../../view/text_button_accent.dart';
 
 class GmsPushProjectCtorScreen extends StatefulWidget {
 

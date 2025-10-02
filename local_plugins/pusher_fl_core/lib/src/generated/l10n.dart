@@ -20,7 +20,7 @@ class FlCoreLocalizations {
   static FlCoreLocalizations get current {
     assert(
       _current != null,
-      'No instance of FlCoreLocalizations was loaded. Try to initialize the FlCoreLocalizations delegate before accessing FlCoreLocalizationFlCoreLocalizations.current.',
+      'No instance of FlCoreLocalizations was loaded. Try to initialize the FlCoreLocalizations delegate before accessing FlCoreLocalizations.current.',
     );
     return _current!;
   }

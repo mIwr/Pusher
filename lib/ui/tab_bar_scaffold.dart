@@ -3,8 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pusher/status_bar_observer.dart';
 import 'package:pusher/system_nav_bar_observer.dart';
-import 'package:pusher/ui/screen/tab/push_gms_ctrl_screen.dart';
-import 'package:pusher/ui/screen/tab/push_hms_ctrl_screen.dart';
 import 'package:pusher/util/status_bar_util.dart';
 import 'package:pusher_fl_core/pusher_fl_core.dart';
 import 'package:pusher_fl_core/pusher_fl_core_ui.dart';

@@ -1,6 +1,6 @@
 #  Changelog
 
-## 1.0.4 (9)
+## 1.0.4 (10)
 **02.10.25**
 
 **Core-related changes**

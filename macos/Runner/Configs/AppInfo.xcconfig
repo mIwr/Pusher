@@ -11,4 +11,4 @@ PRODUCT_NAME = Pusher
 PRODUCT_BUNDLE_IDENTIFIER = org.zeit.pusher
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2024-2025 org.zeit. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024-2025 mIwr. All rights reserved.

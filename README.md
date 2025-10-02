@@ -1,6 +1,6 @@
 # Pusher
 
-[![Platform](https://img.shields.io/badge/Platforms-Android%20%7C%20Linux%20%7C%20Windows-4E4E4E.svg?colorA=28a745)](#Setup)
+[![Platform](https://img.shields.io/badge/Platforms-Android%20%7C%20iOS%20%7C%20Linux%20%7C%20Windows%20%7C%20macOS-4E4E4E.svg?colorA=28a745)](#Setup)
 
 Push message sender to mobile platforms
 
@@ -15,16 +15,16 @@ Push message sender to mobile platforms
 The app provides an interface for sending push messages to mobile devices. Supported message services:
 
 - Google Messaging Services (GMS) through FCM v1 HTTP API (Firebase): Android, iOS
-- Huawei Messaging Services (HMS): Android, iOS
+- Huawei Messaging Services (HMS): Android
 
-Pusher support the next platforms:
+Pusher supports the next platforms:
 
 + Android
 + iOS
 + Windows
 + Linux
 + macOS
-- Web
++ Web (Limited & Experimental)
 
 ## Setup
 

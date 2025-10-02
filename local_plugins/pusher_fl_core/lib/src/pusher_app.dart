@@ -54,7 +54,7 @@ class _PusherAppState extends State<PusherApp> with WidgetsBindingObserver {
       navObservers.addAll(widgetNavObservers);
     }
     final Map<String, Widget Function(BuildContext context)> routes = {
-      kPushGmsCtrlTabRouteKey: widget.homeRouteScreenGenerator,
+      kHomeRouteKey: widget.homeRouteScreenGenerator,
     };
 
     return StreamBuilder<Locale>(stream: localeController.onLocaleChange, initialData: localeController.locale, builder: (context, snapshot) {

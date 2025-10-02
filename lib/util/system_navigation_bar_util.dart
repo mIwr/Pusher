@@ -1,8 +1,7 @@
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 abstract class SystemNavigationBarUtil {
 
@@ -13,7 +12,7 @@ abstract class SystemNavigationBarUtil {
 
   ///Change status bar background and foreground colors
   static Future<void> transformNavigationBar({required Color bgColor, required Brightness fgStyle}) async {
-    if (!Platform.isAndroid) {
+    if (!UniversalPlatform.isAndroid) {
       return;
     }
 

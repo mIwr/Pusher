@@ -50,7 +50,7 @@ abstract class AppNightTheme {
       secondaryContainer: bgSecondary, onSecondaryContainer: primary,
       tertiary: tertiary, onTertiary: primary,
       tertiaryContainer: tertiary, onTertiaryContainer: primary,
-      error: error, onError: primary,
+      error: error, onError: primary, background: bgSecondary, onBackground: primary,
       errorContainer: error, onErrorContainer: primary,
       surface: secondary, onSurface: primaryInverted, outline: border
   );

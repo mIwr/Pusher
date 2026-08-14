@@ -25,7 +25,7 @@ jobs:
     outputs:
       release_ver: ${{ steps.app_proj_version.outputs.version-number }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -45,16 +45,17 @@ jobs:
         run: cd build/linux/x64/release/bundle && zip -r pusher_linux_amd64 .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uploaded_linux_amd64
           path: build/linux/x64/release/bundle/pusher_linux_amd64.zip
+          archive: false
 
   build_android_app:
     name: Build android release build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -73,16 +74,17 @@ jobs:
       - run: flutter build apk --release
 
       - name: Upload signed APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uploaded_apk
           path: build/app/outputs/flutter-apk/app-release.apk
+          archive: false
 
   build_win_app:
     name: Build windows release build
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -93,10 +95,11 @@ jobs:
         run: Compress-Archive -Path build/windows/x64/runner/Release -Destination pusher_win_x64.zip
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: uploaded_win_x64
           path: pusher_win_x64.zip
+          archive: false
           
   github_release_draft:
     name: Make Github release draft
@@ -134,7 +137,7 @@ jobs:
 
     steps:
       - name: Download win artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: uploaded_win_x64
 
@@ -159,7 +162,7 @@ jobs:
 
     steps:
       - name: Download linux artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: uploaded_linux_amd64
 
@@ -185,7 +188,7 @@ jobs:
 
     steps:
       - name: Download android artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: uploaded_apk
 

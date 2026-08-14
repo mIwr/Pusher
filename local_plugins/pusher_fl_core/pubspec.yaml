@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
 
   # Native payload dependencies (Fully cross-platform)
-  shared_preferences: ^2.2.3 # Last 3.3.0 version - 2.2.3
-  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.2.3 # Last 3.3.0 version - 2.2.3 # SPM-ready (No CocoaPods dependencies)
+  flutter_secure_storage: ">=10.3.1 <12.0.0" # SPM-ready from 10.0.0
 
   # Flutter packages (Fully cross-platform)
   flutter_svg: ^2.0.10+1 # SVG render engine # Last 3.3.0 version - 2.0.10+1

@@ -2,7 +2,7 @@ name: pusher
 description: Push notification sender
 
 publish_to: 'none'
-version: 1.0.4+10
+version: 1.0.5+11
 
 environment:
   sdk: ^3.3.4
@@ -13,9 +13,12 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  window_manager: ^0.4.3 # Windows/Linux/macOS app window size controller
+  window_manager: ^0.5.2 # Windows/Linux/macOS app window size controller
 
-  flutter_statusbarcolor_ns: 0.6.0 # Native status bar controller (iOS Background color support)
+  flutter_statusbarcolor_ns: #0.6.0 # Native status bar controller (iOS Background color support)
+    git: # iOS SPM ready
+      url: 'https://github.com/faheem-riaz/flutter_statusbarcolor'
+      ref: '41b65730439f39ea95e5c921f826a1fc1a065101'
     # git: # Android gradle namespace error fix
       # url: 'https://github.com/Schefferbird/flutter_statusbarcolor'
       # ref: 'ac7143a59a098d350bbd364880e619248be953f8'
